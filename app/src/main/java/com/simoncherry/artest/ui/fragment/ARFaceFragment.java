@@ -248,6 +248,7 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
                 mOrnamentSheet.dismiss();
                 mOrnamentId = position;
                 isBuildMask = true;
+
             }
         });
 
@@ -693,15 +694,6 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
             if (isBuildMask) {
                 showMaskModel();
                 isBuildMask = false;
-                Activity activity = getActivity();
-                if (activity != null) {
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            //mTvCameraHint.setVisibility(View.GONE);
-                        }
-                    });
-                }
             }
 
             mContainer.setRotation(mAccValues.x, mAccValues.y, mAccValues.z);

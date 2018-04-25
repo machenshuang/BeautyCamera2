@@ -171,6 +171,7 @@ public class ARFacePresenter implements ARFaceContract.Presenter {
 
     public List<Ornament> getPresetOrnament() {
         List<Ornament> ornaments = new ArrayList<>();
+        ornaments.add(getForbidden());
         ornaments.add(getGlass());
         ornaments.add(getMoustache());
         ornaments.add(getHeart());
@@ -184,6 +185,12 @@ public class ARFacePresenter implements ARFaceContract.Presenter {
         ornaments.add(getIronMan());
         ornaments.add(getRingHat());
         return ornaments;
+    }
+
+    private Ornament getForbidden(){
+        Ornament ornament = new Ornament();
+        ornament.setImgResId(R.drawable.icon_forbidden);
+        return ornament;
     }
 
     private Ornament getGlass() {
