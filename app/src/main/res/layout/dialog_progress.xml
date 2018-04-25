@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/initialize"
+        android:textColor="@color/dialog_progress_title_color"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="18dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="18dp">
+        <ProgressBar
+            android:id="@+id/pb_progress"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:indeterminateOnly="false"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="0"
+            android:layout_marginLeft="30dp"
+            android:progressDrawable="@drawable/dialog_progress_pb_selector"
+            android:background="@drawable/dialog_progress_pb_bg"
+            android:layout_marginRight="30dp" />
+        <TextView
+            android:id="@+id/tv_progress_num"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="invisible"/>
+    </FrameLayout>
+
+</LinearLayout>

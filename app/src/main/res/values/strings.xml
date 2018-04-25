@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">BeautyCamera</string>
+    <string name="action_settings">Settings</string>
+    <string name="description_info">Select an image or open camera</string>
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+
+    <string name="filter0">Original</string>
+    <string name="filter1">AsciiArt</string>
+    <string name="filter2">BasicDeform</string>
+    <string name="filter3">BlueOrange</string>
+    <string name="filter4">ChromaticAberration</string>
+    <string name="filter5">Contrast</string>
+    <string name="filter6">Cracked</string>
+    <string name="filter7">Crosshatch</string>
+    <string name="filter8">EdgeDetection</string>
+    <string name="filter9">EMInterference</string>
+    <string name="filter10">LegoFiled</string>
+    <string name="filter11">LichtensteinEsque</string>
+    <string name="filter12">Mapping</string>
+    <string name="filter13">Money</string>
+    <string name="filter14">NoiseWarp</string>
+    <string name="filter15">Pixelize</string>
+    <string name="filter16">Polygonization</string>
+    <string name="filter17">Refraction</string>
+    <string name="filter18">TileMosaic</string>
+    <string name="filter19">TrianglesMosaic</string>
+    <string name="filter20">Beauty</string>
+    <string name="initialize">initialize</string>
+</resources>
