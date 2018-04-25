@@ -698,7 +698,7 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
                     activity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mTvCameraHint.setVisibility(View.GONE);
+                            //mTvCameraHint.setVisibility(View.GONE);
                         }
                     });
                 }

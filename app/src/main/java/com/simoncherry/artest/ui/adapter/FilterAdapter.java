@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.simoncherry.artest.R;
@@ -60,13 +61,13 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.MyViewHold
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        private FrameLayout layoutRoot;
+        private LinearLayout layoutRoot;
         private ImageView ivImg;
         private TextView tvName;
 
         MyViewHolder(View itemView) {
             super(itemView);
-            layoutRoot = (FrameLayout) itemView.findViewById(R.id.layout_root);
+            layoutRoot = (LinearLayout) itemView.findViewById(R.id.layout_root);
             ivImg = (ImageView) itemView.findViewById(R.id.iv_img);
             tvName = (TextView) itemView.findViewById(R.id.tv_name);
         }

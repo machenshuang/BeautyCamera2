@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 
 /**
- * Created by Simon on 2017/6/23.
+ * Created by machenshuang on 2017/6/23.
  */
 
 public class CustomBottomSheet extends BottomSheetDialog {
