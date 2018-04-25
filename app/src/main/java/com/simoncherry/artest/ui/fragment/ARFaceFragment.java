@@ -41,7 +41,6 @@ import com.simoncherry.artest.OnGetImageListener;
 import com.simoncherry.artest.R;
 import com.simoncherry.artest.contract.ARFaceContract;
 import com.simoncherry.artest.helper.SavePictureTask;
-import com.simoncherry.artest.model.ImageBean;
 import com.simoncherry.artest.model.Ornament;
 import com.simoncherry.artest.nekocode.MyCameraRenderer;
 import com.simoncherry.artest.presenter.ARFacePresenter;
@@ -74,9 +73,6 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 import hugo.weaving.DebugLog;
-import io.realm.Realm;
-import io.realm.RealmList;
-import io.realm.RealmResults;
 
 /**
  * <pre>
@@ -129,7 +125,7 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
 
 
     //拍照相关
-    private Button mTakePhotoBtn;
+    private ImageView mTakePhotoIv;
 
     //与ar贴纸相关
     private static boolean screenshot = false;
@@ -169,7 +165,7 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
 
     private void initView(View view) {
 
-        mTakePhotoBtn = (Button) view.findViewById(R.id.btn_take_photo);
+        mTakePhotoIv = (ImageView) view.findViewById(R.id.iv_take_picture);
 
         textureView = (AutoFitTextureView) view.findViewById(R.id.texture);
         ivDraw = (ImageView) view.findViewById(R.id.iv_draw);
@@ -177,8 +173,8 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
         mLayoutBottomBtn = (LinearLayout) view.findViewById(R.id.layout_bottom_btn);
 
         CheckBox checkLandMark = (CheckBox) view.findViewById(R.id.check_land_mark);
-        Button btnOrnament = (Button) view.findViewById(R.id.btn_ornament_sheet);
-        Button btnFilterSheet = (Button) view.findViewById(R.id.btn_filter_sheet);
+        ImageView btnOrnament = (ImageView) view.findViewById(R.id.iv_ar_sticker);
+        ImageView btnFilterSheet = (ImageView) view.findViewById(R.id.iv_camera_filter);
 
         CompoundButton.OnCheckedChangeListener onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -202,14 +198,14 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
             public void onClick(View v) {
                 int id = v.getId();
                 switch (id) {
-                    case R.id.btn_ornament_sheet:
+                    case R.id.iv_ar_sticker:
                         mOrnamentSheet.show();
                         break;
-                    case R.id.btn_filter_sheet:
+                    case R.id.iv_camera_filter:
                         mLayoutBottomBtn.setVisibility(View.GONE);
                         mFilterSheet.show();
                         break;
-                    case R.id.btn_take_photo:
+                    case R.id.iv_take_picture:
                         mOnGetPreviewListener.setSavePreviewBitmap(true);
                         takePhoto();
 
@@ -220,7 +216,7 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
 
         btnOrnament.setOnClickListener(onClickListener);
         btnFilterSheet.setOnClickListener(onClickListener);
-        mTakePhotoBtn.setOnClickListener(onClickListener);
+        mTakePhotoIv.setOnClickListener(onClickListener);
     }
 
     /**
