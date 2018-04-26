@@ -53,11 +53,10 @@ public class OnGetImageListener implements OnImageAvailableListener {
     private boolean SAVE_PREVIEW_BITMAP = false;
 
     private static final int NUM_CLASSES = 1001;
-    private static final int INPUT_SIZE = 128;
     private static final String TAG = "OnGetImageListener";
 
     private int mScreenRotation = 90;
-
+    private static final int INPUT_SIZE = 128;
     private int mPreviewWdith = 0;
     private int mPreviewHeight = 0;
     private byte[][] mYUVBytes;
