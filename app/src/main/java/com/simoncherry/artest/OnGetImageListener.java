@@ -36,6 +36,7 @@ import android.util.Log;
 
 import com.simoncherry.artest.nekocode.MyCameraRenderer;
 import com.simoncherry.artest.ui.custom.TrasparentTitleView;
+import com.simoncherry.artest.util.FileUtils;
 import com.simoncherry.artest.util.ImageUtils;
 import com.simoncherry.dlib.Constants;
 import com.simoncherry.dlib.FaceDet;
@@ -230,7 +231,7 @@ public class OnGetImageListener implements OnImageAvailableListener {
                     @Override
                     public void run() {
                         if (!new File(Constants.getFaceShapeModelPath()).exists()) {
-                            throw new RuntimeException("cannot find shape_predictor_68_face_landmarks.dat");
+                            FileUtils.copyFileFromRawToOthers(mContext, R.raw.shape_predictor_68_face_landmarks, Constants.getFaceShapeModelPath());
                         }
 
                         long startTime = System.currentTimeMillis();

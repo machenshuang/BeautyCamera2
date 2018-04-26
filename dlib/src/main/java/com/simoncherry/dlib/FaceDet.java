@@ -39,7 +39,9 @@ public class FaceDet {
 
     public FaceDet(String landMarkPath) {
         mLandMarkPath = landMarkPath;
+
         jniInit(mLandMarkPath);
+        Log.d(TAG , landMarkPath);
     }
 
     @Nullable
