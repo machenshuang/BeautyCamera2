@@ -56,7 +56,7 @@ public class OnGetImageListener implements OnImageAvailableListener {
     private static final String TAG = "OnGetImageListener";
 
     private int mScreenRotation = 90;
-    private static final int INPUT_SIZE = 128;
+    private static final int INPUT_SIZE = 432;
     private int mPreviewWdith = 0;
     private int mPreviewHeight = 0;
     private byte[][] mYUVBytes;

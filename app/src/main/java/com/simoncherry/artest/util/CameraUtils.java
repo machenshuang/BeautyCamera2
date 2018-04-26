@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
+import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
@@ -44,9 +45,18 @@ import java.util.concurrent.TimeUnit;
  * Created by machenshuang on 2017/7/1.
  */
 public class CameraUtils {
-    private final static String TAG = CameraUtils.class.getSimpleName();
+    private final static String TAG = "CameraUtils";
     private final static int MINIMUM_PREVIEW_SIZE = 320;
 
+    /**
+     * Max preview width that is guaranteed by Camera2 API
+     */
+    private static final int MAX_PREVIEW_WIDTH = 1920;
+
+    /**
+     * Max preview height that is guaranteed by Camera2 API
+     */
+    private static final int MAX_PREVIEW_HEIGHT = 1080;
     private static AutoFitTextureView mTextureView;
 
     private static int mOrientation;
@@ -153,7 +163,7 @@ public class CameraUtils {
         // Collect the supported resolutions that are at least as big as the preview Surface
         final List<Size> bigEnough = new ArrayList<>();
         for (final Size option : choices) {
-            if (option.getHeight() >= MINIMUM_PREVIEW_SIZE && option.getWidth() >= MINIMUM_PREVIEW_SIZE) {
+            if (option.getHeight() >= aspectRatio.getHeight() && option.getWidth() >= aspectRatio.getWidth()) {
                 Log.i(TAG, "Adding size: " + option.getWidth() + "x" + option.getHeight());
                 bigEnough.add(option);
             } else {
@@ -221,9 +231,11 @@ public class CameraUtils {
                                 Arrays.asList(map.getOutputSizes(ImageFormat.YUV_420_888)),
                                 new CompareSizesByArea());
 
+
                 // Danger, W.R.! Attempting to use too large a preview size could  exceed the camera
                 // bus' bandwidth limitation, resulting in gorgeous previews but the storage of
                 // garbage capture data.
+                Log.d(TAG, largest.getWidth() + "," + largest.getHeight());
                 mPreviewSize =
                         chooseOptimalSize(map.getOutputSizes(SurfaceTexture.class), width, height, largest);
 
