@@ -487,7 +487,7 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
             public void onTransChange(float x, float y, float z) {
                 ARFaceFragment.AccelerometerRenderer renderer = ((ARFaceFragment.AccelerometerRenderer) mRenderer);
                 //renderer.mContainer.setPosition(x/20, -y/20, z/20);
-                renderer.getCurrentCamera().setPosition(-x/220, y/300, z/100);
+                renderer.getCurrentCamera().setPosition(-x/200, y/200, z/100);
             }
 
             @Override

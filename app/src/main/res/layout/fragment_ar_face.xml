@@ -47,7 +47,7 @@
             android:layout_alignStart="@+id/texture"
             android:layout_alignEnd="@+id/texture"
             android:layout_alignTop="@+id/texture"
-            android:layout_marginBottom="50dp"
+            android:layout_alignBottom="@id/texture"
             surfaceview:renderMode="RENDER_WHEN_DIRTY"/>
 
     </RelativeLayout>

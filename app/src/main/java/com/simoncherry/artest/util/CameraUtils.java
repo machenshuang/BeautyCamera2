@@ -51,12 +51,12 @@ public class CameraUtils {
     /**
      * Max preview width that is guaranteed by Camera2 API
      */
-    private static final int MAX_PREVIEW_WIDTH = 1920;
+    private static final int MAX_PREVIEW_WIDTH = 480;
 
     /**
      * Max preview height that is guaranteed by Camera2 API
      */
-    private static final int MAX_PREVIEW_HEIGHT = 1080;
+    private static final int MAX_PREVIEW_HEIGHT = 320;
     private static AutoFitTextureView mTextureView;
 
     private static int mOrientation;
@@ -163,7 +163,7 @@ public class CameraUtils {
         // Collect the supported resolutions that are at least as big as the preview Surface
         final List<Size> bigEnough = new ArrayList<>();
         for (final Size option : choices) {
-            if (option.getHeight() >= aspectRatio.getHeight() && option.getWidth() >= aspectRatio.getWidth()) {
+            if (option.getHeight() >= MINIMUM_PREVIEW_SIZE && option.getWidth() >= MINIMUM_PREVIEW_SIZE) {
                 Log.i(TAG, "Adding size: " + option.getWidth() + "x" + option.getHeight());
                 bigEnough.add(option);
             } else {
