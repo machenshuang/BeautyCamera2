@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
     tools:context=".ui.activity.MainActivity">
 
+    <ImageView
+        android:id="@+id/iv_main_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="center"
+        android:src="@drawable/main_effect"
+        />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_main_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/iv_main_show"/>
+    
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:layout_alignParentBottom="true"
         android:src="@drawable/gallery"/>
 
 
@@ -23,8 +40,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_margin"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:src="@drawable/ic_camera_alt_black_36dp"/>
 
 
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -45,6 +47,7 @@ import com.simoncherry.artest.model.Ornament;
 import com.simoncherry.artest.nekocode.MyCameraRenderer;
 import com.simoncherry.artest.presenter.ARFacePresenter;
 import com.simoncherry.artest.rajawali3d.AExampleFragment;
+import com.simoncherry.artest.ui.activity.MainActivity;
 import com.simoncherry.artest.ui.adapter.FilterAdapter;
 import com.simoncherry.artest.ui.adapter.OrnamentAdapter;
 import com.simoncherry.artest.ui.custom.AutoFitTextureView;
@@ -73,6 +76,8 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 import hugo.weaving.DebugLog;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * <pre>
@@ -109,6 +114,8 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
     private List<Integer> mFilters = new ArrayList<>();
     private MediaLoaderCallback mediaLoaderCallback = null;
     private Subscription mSubscription = null;
+
+    private ImageView mGuideView;
 
     private float lastX = 0;
     private float lastY = 0;
@@ -175,6 +182,14 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
         CheckBox checkLandMark = (CheckBox) view.findViewById(R.id.check_land_mark);
         ImageView btnOrnament = (ImageView) view.findViewById(R.id.iv_ar_sticker);
         ImageView btnFilterSheet = (ImageView) view.findViewById(R.id.iv_camera_filter);
+
+        mGuideView = (ImageView) view.findViewById(R.id.iv_guide);
+        mGuideView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mGuideView.setVisibility(View.GONE);
+            }
+        });
 
         CompoundButton.OnCheckedChangeListener onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -510,6 +525,20 @@ public class ARFaceFragment extends AExampleFragment implements ARFaceContract.V
         });
 
         CameraUtils.setOnGetPreviewListener(mOnGetPreviewListener);
+
+        SharedPreferences shared = getContext().getSharedPreferences("First", MODE_PRIVATE);
+        boolean isFirst = shared.getBoolean("isFrist", true);
+        SharedPreferences.Editor editor = shared.edit();
+        if(isFirst){
+            //第一次进入跳转
+            mGuideView.setVisibility(View.VISIBLE);
+            editor.putBoolean("isFrist", false);
+            editor.commit();
+        }else{
+            //第二次进入跳转
+            //mGuideView.setVisibility(View.GONE);
+
+        }
     }
 
 

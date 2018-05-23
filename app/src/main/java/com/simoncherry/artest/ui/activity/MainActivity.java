@@ -27,6 +27,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +38,7 @@ import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.provider.BigImageCardProvider;
 import com.dexafree.materialList.view.MaterialListView;
 import com.simoncherry.artest.R;
+import com.simoncherry.artest.ui.adapter.ShowItemAdapter;
 import com.simoncherry.dlib.Constants;
 import com.simoncherry.dlib.FaceDet;
 import com.simoncherry.dlib.PedestrianDet;
@@ -61,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
+
+
+    private ArrayList<Integer> mData;
+
     // Storage Permissions
     private static String[] PERMISSIONS_REQ = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -75,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
     protected FloatingActionButton mFabActionBt;
     @ViewById(R.id.fab_cam)
     protected FloatingActionButton mFabCamActionBt;
-
+    @ViewById(R.id.rv_main_show)
+    protected RecyclerView mShowRecyclerView;
 
 
     FaceDet mFaceDet;
@@ -94,18 +102,30 @@ public class MainActivity extends AppCompatActivity {
         if (currentapiVersion >= Build.VERSION_CODES.M) {
             verifyPermissions(this);
         }
+        initData();
+
     }
+
+
+
 
     @AfterViews
     protected void setupUI() {
         Toast.makeText(MainActivity.this, getString(R.string.description_info), Toast.LENGTH_LONG).show();
+        ShowItemAdapter adapter = new ShowItemAdapter(this, mData);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        mShowRecyclerView.setLayoutManager(linearLayoutManager);
+        mShowRecyclerView.setAdapter(adapter);
     }
 
     @Click({R.id.fab})
     protected void launchGallery() {
         Toast.makeText(MainActivity.this, "Pick one image", Toast.LENGTH_SHORT).show();
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+        //startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+        startActivity(galleryIntent);
     }
 
     @Click({R.id.fab_cam})
@@ -191,4 +211,18 @@ public class MainActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
     }
+
+    private void initData(){
+        mData = new ArrayList<>();
+        mData.add(R.drawable.main_item1);
+        mData.add(R.drawable.main_item2);
+        mData.add(R.drawable.main_item3);
+        mData.add(R.drawable.main_item4);
+        mData.add(R.drawable.main_item5);
+        mData.add(R.drawable.main_item_6);
+        mData.add(R.drawable.main_item_7);
+        mData.add(R.drawable.main_item_8);
+        mData.add(R.drawable.main_item_9);
+    }
+
 }
